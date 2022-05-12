@@ -10,21 +10,20 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
+public class HttpBaseClient {
 
-public class MyClient {
+    private CloseableHttpClient httpClient;
+    private HttpResponse response;
+    private int statusCode;
+    protected String body;
 
-    private static final Logger logger = LogManager.getLogger();
+    protected static final Logger logger = LogManager.getLogger();
 
-    CloseableHttpClient httpClient;
-    HttpResponse response;
-    int statusCode;
-    String body;
-
-    public MyClient() {
+    public HttpBaseClient() {
         httpClient = HttpClientBuilder.create().build();
     }
 
-    public void sendGet(String url){
+    public void sendGet(String url) {
         try {
             response = httpClient.execute(new HttpGet(url));
         } catch (IOException e) {
@@ -32,13 +31,13 @@ public class MyClient {
         }
     }
 
-    public int getStatusCode(){
+    public int getStatusCode() {
         statusCode = response.getStatusLine().getStatusCode();
         logger.info(statusCode);
         return statusCode;
     }
 
-    public String getBody(){
+    public String getBody() {
         try {
             body = EntityUtils.toString(response.getEntity());
             logger.info(body);
@@ -47,10 +46,4 @@ public class MyClient {
         }
         return body;
     }
-
-
-
-    //httpClient = HttpClientBuilder.create().build();
-
-
 }
