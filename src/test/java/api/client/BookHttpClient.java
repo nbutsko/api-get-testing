@@ -6,9 +6,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookClient extends HttpBaseClient {
+public class BookHttpClient extends HttpBaseClient {
 
-    public BookClient() {
+    public BookHttpClient() {
         super();
     }
 

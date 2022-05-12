@@ -1,14 +1,14 @@
 package api;
 
-import api.client.BookClient;
+import api.client.BookHttpClient;
 import org.junit.jupiter.api.BeforeEach;
 
 public class AbstractTest {
 
-    public BookClient client;
+    public BookHttpClient client;
 
     @BeforeEach
     public void getClient(){
-        client = new BookClient();
+        client = new BookHttpClient();
     }
 }
